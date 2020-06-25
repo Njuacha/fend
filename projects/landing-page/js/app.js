@@ -25,6 +25,19 @@
  *
 */
 
+/**
+ * This method returns true when an element's visibility in viewport is above the the percentVisible arguement
+*/
+const isElementXPercentInViewport = function(el, percentVisible) {
+  let
+    rect = el.getBoundingClientRect(),
+    windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+
+  return !(
+    Math.floor(100 - (((rect.top >= 0 ? 0 : rect.top) / +-(rect.height / 1)) * 100)) < percentVisible ||
+    Math.floor(100 - ((rect.bottom - windowHeight) / rect.height) * 100) < percentVisible
+  )
+};
 
 
 /**
@@ -52,9 +65,37 @@ navBarList.appendChild(navMenuFragment);
 
 
 
-
 // Add class 'active' to section when near top of viewport
+/*
+* This section adds class active to section when near top of viewport
+*/
+let currentlyActiveSection ;
+window.addEventListener('scroll', function(){
+  let count = 0;
+  for (section of sections) {
+    // check if section is above 50% visible in the view port
+    if(isElementXPercentInViewport(section, 50)) {
+      // if the section is not already active then set it as active
+      if (currentlyActiveSection != section){
+        // make the previous section and it's corresponding nav menu of inactive
+        if (currentlyActiveSection != null){
+          currentlyActiveSection.classList.remove('active');
+          const id1 = currentlyActiveSection.id;
+          navBarList.querySelector('[data-section='+id1+']').classList.remove('active');
+        }
+        // make the current section and it's corresponding nav menu of active
+        section.classList.add('active');
+        const id2 = section.id;
+        navBarList.querySelector('[data-section='+id2+']').classList.add('active');
 
+        currentlyActiveSection = section;
+      }
+
+      break;
+    }
+
+  }
+});
 
 // Scroll to anchor ID using scrollTO event
 
