@@ -98,7 +98,15 @@ window.addEventListener('scroll', function(){
 });
 
 // Scroll to anchor ID using scrollTO event
+navBarList.addEventListener('click', function(e) {
 
+  if (e.target.nodeName === 'LI') {
+    // get id of section from nav menu clicked
+    const sectionId = e.target.getAttribute('data-section');
+    document.getElementById(sectionId).scrollIntoView();
+  }
+  // TODO: Make the scrolling to be smooth or animated and not just a jump
+});
 
 /**
  * End Main Functions
