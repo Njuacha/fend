@@ -73,13 +73,6 @@ section {
 
 .navbar__menu li {
     display: inline-block;
-    padding: 10px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.navbar__menu li.active {
-    background-color: rgb(0,13,60);
 }
 
 .navbar__menu .menu__link {
@@ -94,6 +87,11 @@ section {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+.navbar__menu .menu__link.active {
+    background: #333;
+    color: #fff;
 }
 
 /* Header Styles */

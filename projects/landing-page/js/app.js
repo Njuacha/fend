@@ -17,6 +17,7 @@
  * Define Global Variables
  *
 */
+const navBarList = document.querySelector('#navbar__list');
 
 
 /**
@@ -28,7 +29,7 @@
 /**
  * This method returns true when an element's visibility in viewport is above the the percentVisible arguement
 */
-const isElementXPercentInViewport = function(el, percentVisible) {
+const isElementXPercentInViewport = (el, percentVisible) => {
   let
     rect = el.getBoundingClientRect(),
     windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -39,6 +40,20 @@ const isElementXPercentInViewport = function(el, percentVisible) {
   )
 };
 
+/**
+ * This function scrolls smoothly to an element
+*/
+const scrollToElement = (target) => {
+    // determine height from top + nav bar height
+    let section = document.querySelector(target.hash);
+    let height = section.offsetTop - navBarList.offsetHeight;
+
+    scrollTo({
+        top      : height,
+        behavior : 'smooth'
+    });
+};
+
 
 /**
  * End Helper Functions
@@ -46,7 +61,10 @@ const isElementXPercentInViewport = function(el, percentVisible) {
  *
 */
 
-// build the nav
+
+/**
+ * build the nav
+*/
 const sections = document.querySelectorAll('[data-nav]');
 const navMenuFragment = document.createDocumentFragment();
 
@@ -55,17 +73,15 @@ for (const section of sections) {
   const sectionName = section.getAttribute('data-nav');
   // create list item an append to navMenuFragment
   const menuItem = document.createElement('li');
-  menuItem.setAttribute('data-section',id);
-  menuItem.innerText = sectionName;
+  menuItem.innerHTML = `<a href= #${id} class="menu__link"> ${sectionName} </a>`;
+
   navMenuFragment.appendChild(menuItem);
 }
 
-const navBarList = document.querySelector('#navbar__list');
 navBarList.appendChild(navMenuFragment);
 
 
 
-// Add class 'active' to section when near top of viewport
 /*
 * This section adds class active to section when near top of viewport
 */
@@ -77,17 +93,17 @@ window.addEventListener('scroll', function(){
     if(isElementXPercentInViewport(section, 50)) {
       // if the section is not already active then set it as active
       if (currentlyActiveSection != section){
-        // make the previous section and it's corresponding nav menu of inactive
+        // make the previous section and it's corresponding nav menu link inactive
         if (currentlyActiveSection != null){
           currentlyActiveSection.classList.remove('active');
           const id1 = currentlyActiveSection.id;
-          navBarList.querySelector('[data-section='+id1+']').classList.remove('active');
+          navBarList.querySelector("li a[href='#"+ id1 + "']").classList.remove('active');
         }
-        // make the current section and it's corresponding nav menu of active
+        // make the current section and it's corresponding nav menu link active
         section.classList.add('active');
         const id2 = section.id;
-        navBarList.querySelector('[data-section='+id2+']').classList.add('active');
 
+        navBarList.querySelector("li a[href='#"+ id2 + "']").classList.add('active');
         currentlyActiveSection = section;
       }
 
@@ -99,12 +115,11 @@ window.addEventListener('scroll', function(){
 
 // Scroll to anchor ID using scrollTO event
 navBarList.addEventListener('click', function(e) {
-
-  if (e.target.nodeName === 'LI') {
-    // get id of section from nav menu clicked
-    const sectionId = e.target.getAttribute('data-section');
-    document.getElementById(sectionId).scrollIntoView();
-  }
+  // prevent default behavoir which makes the page jump to section
+   event.preventDefault();
+   if(e.target.nodeName === 'A') {
+     scrollToElement(e.target);
+   }
   // TODO: Make the scrolling to be smooth or animated and not just a jump
 });
 
