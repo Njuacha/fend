@@ -1,13 +1,13 @@
 # Landing Page Project
 
-## Table of Contents
+## About
 
-* [Instructions](#instructions)
+This website uses javascript to dynamically create navigation menu items after the page has loaded into the browser.
 
-## Instructions
+## Requirement
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To run this website on your local computer all you need is a browser
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Programming languages Used
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+This website was built with HTML, CSS and Javascript.
