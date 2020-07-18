@@ -11,6 +11,14 @@ document.querySelector('#generate').addEventListener('click', () => {
    const zipCode = document.querySelector('#zip').value;
    const feelings = document.querySelector('#feelings').value;
 
+   if(zipCode == "") {
+     alert('please provide a zip code');
+     return;
+   } else if (feelings == "") {
+     alert('please enter your feelings');
+     return;
+   }
+
    // get current weather from openWeathermap api
    getCurrentTemperature(zipCode)
    // then post the temperature of city of zip code together with feelings of user typed in and the current date
