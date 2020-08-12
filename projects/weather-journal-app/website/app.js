@@ -12,7 +12,7 @@ document.querySelector('#generate').addEventListener('click', () => {
    const zipCode = document.querySelector('#zip').value;
    const feelings = document.querySelector('#feelings').value;
 
-   if(zipCode == "") {
+   if(zipCode == "") {  
      alert('please provide a zip code');
      return;
    } else if (feelings == "") {
