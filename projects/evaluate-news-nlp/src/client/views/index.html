@@ -2,36 +2,46 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>Sentiment analysis website</title>
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+            <p> Welcome to this simple Sentiment analysis website </p>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                  <textarea> </textarea>
+                  <span> <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> </span>
+
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <p><strong>Sentiment analysis Results</strong></p>
+                <div>
+                  <label>Subjective Or Objective : </label>
+                </div>
+                <div>
+                  <label>Irony : </label>
+                </div>  
+
+                <table>
+                  <tr>
+                    <th> Sentence </th>
+                    <th> Confidence </th>
+                    <th> Score-tag</th>
+                    <th> Concepts </th>
+                  </tr>
+                </table>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Thanks for using website !</p>
         </footer>
 
     </body>
