@@ -1,21 +1,32 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    // very simple input validation
     let formText = document.getElementById('formText').value;
-    if(formText == "") {
+    // check if input valid
+    if(!isInputValid(formText)) {
       return;
     }
-    // remove white spaces
-    formText = formText.trim();
-    // add escape characters so that it would be compactible with format required by sentiment api
-    formText = escape(formText);
-    console.log("::: Form Submitted :::")
+    // format text to form accepted by api
+    const text = formatTextForMeaningCloudApi(formText);
 
-    postData('http://localhost:8081/getResults', {text: formText})
+    postData('http://localhost:8081/getResults', {text: text})
     .then((newData)  =>
       updateUI(newData)
     )
+}
+
+// very simple input validation
+function isInputValid(formText) {
+  let text = formText.trim();
+  return text == ""? false: true;
+}
+
+function formatTextForMeaningCloudApi(text) {
+  // remove white spaces
+  text = text.trim();
+  // add escape characters so that it would be compactible with format required by sentiment api
+  text = escape(text);
+  return text;
 }
 
 const postData = async (url = '', data = {}) => {
@@ -59,3 +70,6 @@ const updateUI = (newData) => {
 }
 
 export { handleSubmit }
+export { isInputValid }
+export { formatTextForMeaningCloudApi }
+export { postData }
