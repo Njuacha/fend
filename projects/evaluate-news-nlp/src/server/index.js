@@ -39,7 +39,7 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-app.get('/getResults', function (req, res) {
+app.post('/getResults', function (req, res1) {
     const text = req.body.text;
 
     console.log('text received:'+text);
@@ -63,6 +63,7 @@ app.get('/getResults', function (req, res) {
       res.on("end", function (chunk) {
         var body = Buffer.concat(chunks);
         console.log(body.toString());
+        res1.send(body);
       });
 
       res.on("error", function (error) {

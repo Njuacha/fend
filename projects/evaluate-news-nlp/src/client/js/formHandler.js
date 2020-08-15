@@ -6,12 +6,32 @@ function handleSubmit(event) {
     // Client.checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/getResults', {text: 'how are you doing today.'})
-    .then(res => res.json())
-    .then(function(res) {
-        console.log(res.message);
-        //document.getElementById('results').innerHTML = res.message
+    const text = escape('Very wonderful app.')
+    postData('http://localhost:8081/getResults', {text: text})
+    .then(function(newData) {
+        console.log('Subjective: '+newData.subjectivity);
+        console.log('Irony: '+newData.irony);
+        //console.log('')
     })
+}
+
+const postData = async (url = '', data = {}) => {
+
+  const response = await fetch(url, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  try {
+    const newData = await response.json();
+    return newData;
+  }catch(error) {
+    console.log('error', error);
+  }
 }
 
 export { handleSubmit }
