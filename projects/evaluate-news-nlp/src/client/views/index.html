@@ -8,33 +8,34 @@
     <body>
 
         <header>
-            <p> Welcome to this simple Sentiment analysis website </p>
+            <h1> Welcome to this simple Sentiment analysis website </h1>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                  <textarea> </textarea>
+                  <textarea id="formText"> </textarea>
                   <span> <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> </span>
 
                 </form>
             <section>
 
             <section>
-                <p><strong>Sentiment analysis Results</strong></p>
-                <div>
+                <p class="sentiment-results"><strong>Sentiment analysis Results</strong></p>
+                <div class="result-label">
                   <label>Subjective Or Objective : </label>
+                  <span class="result-value" id="objectivity"> </span>
                 </div>
-                <div>
+                <div class="result-label">
                   <label>Irony : </label>
-                </div>  
+                  <span class="result-value" id="irony"> </span>
+                </div>
 
-                <table>
+                <table class="result-label" id="table">
                   <tr>
                     <th> Sentence </th>
                     <th> Confidence </th>
                     <th> Score-tag</th>
-                    <th> Concepts </th>
                   </tr>
                 </table>
             </section>
