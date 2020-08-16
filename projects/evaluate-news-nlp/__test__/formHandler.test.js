@@ -3,12 +3,6 @@ import {isInputValid, formatTextForMeaningCloudApi, postData} from '../src/clien
 
 describe("Testing the extra methods needed", () => {
 
-     test("Testing the isInputValid(text) function", () => {
-          const emptyText = "  ";
-          const nonEmptyText = "text";
-          expect(isInputValid(emptyText)).toBeFalsy();
-          expect(isInputValid(nonEmptyText)).toBeTruthy();
-     })
 
      test("Testing the formatTextForMeaningCloudApi(text) function", () => {
           const text = "I am in wrong format";

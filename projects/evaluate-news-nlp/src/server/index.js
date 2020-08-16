@@ -42,8 +42,6 @@ app.get('/test', function (req, res) {
 app.post('/getResults', function (req, res1) {
     const text = req.body.text;
 
-    console.log('text received:'+text);
-
     const options = {
       'method': 'POST',
       'hostname': 'api.meaningcloud.com',

@@ -1,9 +1,10 @@
+
 function handleSubmit(event) {
     event.preventDefault()
 
     let formText = document.getElementById('formText').value;
     // check if input valid
-    if(!isInputValid(formText)) {
+    if(!Client.isInputValid(formText)) {
       return;
     }
     // format text to form accepted by api
@@ -15,11 +16,6 @@ function handleSubmit(event) {
     )
 }
 
-// very simple input validation
-function isInputValid(formText) {
-  let text = formText.trim();
-  return text == ""? false: true;
-}
 
 function formatTextForMeaningCloudApi(text) {
   // remove white spaces
@@ -52,7 +48,7 @@ const updateUI = (newData) => {
      const objectiveOrSubjective = newData.subjectivity;
      const irony = newData.irony;
      const sentencesJsonArray = newData.sentence_list;
-    
+
      document.querySelector('#objectivity').innerText = objectiveOrSubjective;
      document.querySelector('#irony').innerText = irony;
 
@@ -70,7 +66,6 @@ const updateUI = (newData) => {
 
 export {
     handleSubmit,
-    isInputValid,
     formatTextForMeaningCloudApi,
     postData
 }
