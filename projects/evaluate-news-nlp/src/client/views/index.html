@@ -14,14 +14,13 @@
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                  <textarea id="formText"> </textarea>
+                  <textarea id="formText" placeholder="Type in some text here ..."> </textarea>
                   <span> <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> </span>
-
                 </form>
             <section>
 
             <section>
-                <p class="sentiment-results"><strong>Sentiment analysis Results</strong></p>
+                <p class="sentiment-results"><h2>Sentiment analysis Results</h2></p>
                 <div class="result-label">
                   <label>Subjective Or Objective : </label>
                   <span class="result-value" id="objectivity"> </span>
@@ -44,6 +43,16 @@
         <footer>
             <p>Thanks for using website !</p>
         </footer>
+
+        <script>
+             // Check that service workers are supported
+             if ('serviceWorker' in navigator) {
+                 // Use the window load event to keep the page load performant
+                 window.addEventListener('load', () => {
+                     navigator.serviceWorker.register('/service-worker.js');
+                 });
+             }
+        </script>
 
     </body>
 </html>

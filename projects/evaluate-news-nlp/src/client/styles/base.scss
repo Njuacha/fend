@@ -10,11 +10,15 @@ main {
     flex: 2;
 }
 
+table {
+  border: 1px solid black;
+}
+
 section {
     margin: 50px auto;
 
     .result-label {
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     .result-value {
@@ -24,5 +28,10 @@ section {
     .sentiment-results {
       text-align: center;
       width: 100%;
+    }
+
+    #table {
+      border-collapse: separate;
+      border-spacing: 15px;
     }
 }

@@ -52,8 +52,7 @@ const updateUI = (newData) => {
      const objectiveOrSubjective = newData.subjectivity;
      const irony = newData.irony;
      const sentencesJsonArray = newData.sentence_list;
-     console.log('objectivity:'+objectiveOrSubjective);
-     console.log('irony:'+irony);
+    
      document.querySelector('#objectivity').innerText = objectiveOrSubjective;
      document.querySelector('#irony').innerText = irony;
 
@@ -69,7 +68,9 @@ const updateUI = (newData) => {
 
 }
 
-export { handleSubmit }
-export { isInputValid }
-export { formatTextForMeaningCloudApi }
-export { postData }
+export {
+    handleSubmit,
+    isInputValid,
+    formatTextForMeaningCloudApi,
+    postData
+}

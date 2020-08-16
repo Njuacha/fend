@@ -26,8 +26,8 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    //res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+  //  res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 // designates what port the app will listen to for incoming requests
@@ -62,7 +62,6 @@ app.post('/getResults', function (req, res1) {
 
       res.on("end", function (chunk) {
         var body = Buffer.concat(chunks);
-        console.log(body.toString());
         res1.send(body);
       });
 
